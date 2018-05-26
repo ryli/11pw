@@ -1,13 +1,63 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="page-body">
+
+  <view class="page-section">
+      <view class="weui-cells__title bte" style="margin-top: 0;">Type</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_inpu">
+            <picker bindchange="pickerChange" value="{{type}}" range="{{typeData}}" class="w100p">
+              <view class="picker">{{type}}</view>
+            </picker>
+        </view>
+
+      </view>
+    </view>
+
+  <view class="page-section">
+    <view class="weui-cells__title">Content</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input
+          value="{{content}}"
+          bindinput="contentChange"
+          class="weui-input w100p"
+          type="text"
+          placeholder="username@website.com"
+        />
+      </view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="page-section">
+    <view class="weui-cells__title">HMAC</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input
+          value="{{hmac}}"
+          bindinput="hmacChange"
+          class="weui-input w100p"
+          type="text"
+          placeholder="Some token"/>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-section">
+    <view class="weui-cells__title">Length</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <slider class="w100p" bindchange="sliderChange" value="{{length}}" min="1" max="40" show-value/>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-section" style="margin-top: 15px;">
+    <view class="result-view">
+      <text class="result" selectable="{{true}}" space="{{true}}">{{result}}</text>
+    </view>
+  </view>
+
+  <view class="page-section" style="padding: 15px;">
+    <button bindtap="gen" type="primary">Generate</button>
   </view>
 </view>

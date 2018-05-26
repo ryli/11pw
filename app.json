@@ -5,8 +5,8 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "1Password",
     "navigationBarTextStyle":"black"
   }
 }
